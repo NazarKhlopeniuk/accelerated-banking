@@ -1,0 +1,650 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+<main id="main" class="main">
+
+  <div class="pagetitle">
+    <h1>AI Assistant</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+        <li class="breadcrumb-item active">AI Assistant</li>
+      </ol>
+    </nav>
+  </div><!-- End Page Title -->
+
+  <section class="section">
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Category</h5>
+            <div class="col-sm-12">
+              <select id="category" class="form-select" aria-label="Default select example" name="category">
+                <option value="CPA">Accounting/CPA</option>
+                <option value="HR">Human Resources</option>
+                <option value="Legal">Legal</option>
+                <option value="Private Doc">Private Document</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Chat History</h5>
+            <div class="col-sm-12">
+              <select id="history" class="form-select" aria-label="Default select example" name="category">
+
+              </select>
+            </div>
+            <br>
+            <div class="col-sm-12 text-center">
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#new_modal">
+                New
+              </button>
+              <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete_modal">
+                Delete
+              </button>
+            </div>
+            <div class="modal fade" id="new_modal" tabindex="-1">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Start New Chat</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <form>
+                      <div class="row mb-3">
+                        <label for="inputEmail3" class="col-sm-3 col-form-label">Chat Name</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" id="history_input" required>
+                        </div>
+                      </div>
+                      <div class="text-center">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button id="create_history" type="submit" class="btn btn-primary"
+                          data-bs-dismiss="modal">Start</button>
+                        <!-- <button type="reset" class="btn btn-secondary">Reset</button> -->
+                      </div>
+                    </form><!-- End Horizontal Form -->
+
+
+                  </div>
+                  <!-- <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button id="create_history" type="button" class="btn btn-primary" data-bs-dismiss="modal">Create</button>
+                  </div> -->
+                </div>
+              </div>
+            </div><!-- End Vertically centered Modal-->
+            <div class="modal fade" id="delete_modal" tabindex="-1">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Confirm Deletion</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    Are you sure you want to delete this item?
+                    This action cannot be undone.
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button id="delete_history" type="button" class="btn btn-primary"
+                      data-bs-dismiss="modal">Delete</button>
+                  </div>
+                </div>
+              </div>
+            </div><!-- End Vertically centered Modal-->
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">We create the most realistic artificial intelligence</h5>
+
+            <div class="accordion accordion-flush" id="faq-group-2">
+
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" data-bs-target="#faqsTwo-1" type="button"
+                    data-bs-toggle="collapse">
+                    Description of the AI Assistance
+                  </button>
+                </h2>
+                <div id="faqsTwo-1" class="accordion-collapse collapse" data-bs-parent="#faq-group-2">
+                  <div class="accordion-body">
+                    We build AI bots that serve as assistance for specific industries. Rather than taking over jobs from
+                    hard working people, our AI acts as an “all knowing” entity to support your staff. Ask it any
+                    question and get an answer based on over 1,000 books, trusted websites, and associations. It’s not a
+                    search engine, its an answer engine.
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" data-bs-target="#faqsTwo-2" type="button"
+                    data-bs-toggle="collapse">
+                    Benefits
+                  </button>
+                </h2>
+                <div id="faqsTwo-2" class="accordion-collapse collapse" data-bs-parent="#faq-group-2">
+                  <div class="accordion-body">
+
+                    <p>
+                      Accounting/CPA
+                      Get the answers you need instantly from over 100 books on accounting and the latest updates to the
+                      IRS code.
+                    </p>
+                    <p>
+                      Instant access to questions around Human Resources. All updated with the latest information from
+                      SHRM.
+                    </p>
+                    <p>
+                      Our legal AI is built using over 500 legal publications which include all readings required from
+                      ivy league universities, and case studies.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" data-bs-target="#faqsTwo-3" type="button"
+                    data-bs-toggle="collapse">
+                    Artificial Intelligence
+                  </button>
+                </h2>
+                <div id="faqsTwo-3" class="accordion-collapse collapse" data-bs-parent="#faq-group-2">
+                  <div class="accordion-body">
+                    Voluptates magni amet enim perspiciatis atque excepturi itaque est. Sit beatae animi incidunt eum
+                    repellat sequi ea saepe inventore. Id et vel et et. Nesciunt itaque corrupti quia ducimus.
+                    Consequatur maiores voluptatum fuga quod ut non fuga.
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" data-bs-target="#faqsTwo-4" type="button"
+                    data-bs-toggle="collapse">
+                    Language Processing
+                  </button>
+                </h2>
+                <div id="faqsTwo-4" class="accordion-collapse collapse" data-bs-parent="#faq-group-2">
+                  <div class="accordion-body">
+                    Numquam ut reiciendis aliquid. Quia veritatis quasi ipsam sed quo ut eligendi et non. Doloremque sed
+                    voluptatem at in voluptas aliquid dolorum.
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" data-bs-target="#faqsTwo-5" type="button"
+                    data-bs-toggle="collapse">
+                    Computer Vision
+                  </button>
+                </h2>
+                <div id="faqsTwo-5" class="accordion-collapse collapse" data-bs-parent="#faq-group-2">
+                  <div class="accordion-body">
+                    Aut necessitatibus maxime quis dolor et. Nihil laboriosam molestiae qui molestias placeat corrupti
+                    non quo accusamus. Nemo qui quis harum enim sed. Aliquam molestias pariatur delectus voluptas quidem
+                    qui rerum id quisquam. Perspiciatis voluptatem voluptatem eos. Vel aut minus labore at rerum eos.
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" data-bs-target="#faqsTwo-5" type="button"
+                    data-bs-toggle="collapse">
+                    Robotic Intelligence
+                  </button>
+                </h2>
+                <div id="faqsTwo-5" class="accordion-collapse collapse" data-bs-parent="#faq-group-2">
+                  <div class="accordion-body">
+                    Aut necessitatibus maxime quis dolor et. Nihil laboriosam molestiae qui molestias placeat corrupti
+                    non quo accusamus. Nemo qui quis harum enim sed. Aliquam molestias pariatur delectus voluptas quidem
+                    qui rerum id quisquam. Perspiciatis voluptatem voluptatem eos. Vel aut minus labore at rerum eos.
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" data-bs-target="#faqsTwo-5" type="button"
+                    data-bs-toggle="collapse">
+                    Neural Processing
+                  </button>
+                </h2>
+                <div id="faqsTwo-5" class="accordion-collapse collapse" data-bs-parent="#faq-group-2">
+                  <div class="accordion-body">
+                    Aut necessitatibus maxime quis dolor et. Nihil laboriosam molestiae qui molestias placeat corrupti
+                    non quo accusamus. Nemo qui quis harum enim sed. Aliquam molestias pariatur delectus voluptas quidem
+                    qui rerum id quisquam. Perspiciatis voluptatem voluptatem eos. Vel aut minus labore at rerum eos.
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+        <!-- <div class="card">
+          <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+            <img src="{% static 'assets/img/notifications.svg' %}" alt="Profile">
+            <h2>Instant Insights</h2>
+            <p>Receive immediate, AI-generated answers to your questions, empowering you with valuable information.</p>
+          </div>
+        </div> -->
+      </div>
+
+      <div class="col-lg-9">
+        <div class="card" style="height: 77vh;">
+          <div class="card-body">
+            <h5 id="chat_title" class="card-title">No History</h5>
+            {% csrf_token %}
+            <!-- <div class="container" style="height: 70vh;"> -->
+            <!-- <h1 class="mt-5">My ChatBot</h1> -->
+            <!-- <p class="lead">
+                This project is created for educational purposes and demonstrates the use of ChatGPT API from OpenAI. To get started you will need the following:
+              </p> -->
+
+
+            <div id="list-group" class="list-group w-auto" style="overflow-y: auto; height: 65vh; ">
+              {% for chat in chats %}
+              <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3">
+                <img src="{% static 'assets/img/user.jfif' %}" alt="twbs" width="32" height="32"
+                  class="rounded-circle flex-shrink-0">
+                <div class="d-flex gap-2 w-100 justify-content-between">
+                  <div>
+                    <p class="mb-0 opacity-95">{{chat.message}}</p>
+                  </div>
+                </div>
+              </a>
+              <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3">
+                <img src="https://digital-practice.ams3.cdn.digitaloceanspaces.com/static%2Fapp%2Fimg%2Fopenai-logo.png"
+                  alt="twbs" width="32" height="32" class="rounded-circle flex-shrink-0">
+                <div class="d-flex gap-2 w-100 justify-content-between">
+                  <div>
+                    <p class="mb-0 opacity-95">{{chat.response}}</p>
+                  </div>
+                </div>
+              </a>
+              {% endfor %}
+            </div>
+
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" id="chat-input">
+              <div class="input-group-append">
+                <button id="gpt-button" class="btn btn-primary">Ask ChatGPT</button>
+              </div>
+            </div>
+            <!-- </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"
+  integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script> -->
+<script>
+  $(document).ready(function () {
+    // history initializer
+    var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
+    $.ajax({
+      type: "POST",
+      url: "/get_history",
+      headers: {
+        "X-CSRFToken": csrftoken
+      },
+      data: { 'category': "CPA" },
+      success: function (data) {
+        var history_data = ""
+        for (let i = 1; i <= data.length; i++) {
+          console.log(data[i - 1])
+          history_data += `
+           <option value="${data[i - 1]}">${data[i - 1]}</option>
+          `
+        }
+        $('#history').html(history_data);
+        // chat initializer
+        if (data.length > 0) {
+          var init_history = data[0]
+          $('#chat_title').text(init_history)
+          $.ajax({
+            type: "POST",
+            url: "/get_chat",
+            headers: {
+              "X-CSRFToken": csrftoken
+            },
+            data: { 'history': init_history },
+            success: function (data) {
+              chat_data = ``
+              for (i = 1; i <= data.length; i++) {
+                chat_data += `
+            <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" style="background-color:#e6e6e6">
+              <img src="{% static 'assets/img/user.jfif' %}" alt="twbs" width="32" height="32" class="rounded-circle flex-shrink-0">
+              <div class="d-flex gap-2 w-100 justify-content-between">
+                <div>
+                  <p class="mb-0 opacity-95">${data[i - 1][0]}</p>
+                </div>
+              </div>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3">
+                <img src="https://digital-practice.ams3.cdn.digitaloceanspaces.com/static%2Fapp%2Fimg%2Fopenai-logo.png" alt="twbs" width="32" height="32" class="rounded-circle flex-shrink-0">
+                <div class="d-flex gap-2 w-100 justify-content-between">
+                <div>
+                <p class="mb-0 opacity-85">${data[i - 1][1]}</p>
+                </div>
+              </div>
+            </a>
+            `;
+              }
+              $("#list-group").html(chat_data);
+              $('#list-group').scrollTop($("#list-group")[0].scrollHeight);
+            }
+          });
+        }
+      }
+    });
+
+    $("#chat-input").keypress(function (e) {
+      if (e.keyCode === 13) {
+        console.log("pressed")
+        var category = $('#category').val();
+        var history = $('#history').val();
+        var question = $("#chat-input").val();
+        console.log(category)
+        let html_data = '';
+        html_data += `
+        <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" style="background-color:#e6e6e6">
+          <img src="{% static 'assets/img/user.jfif' %}" alt="twbs" width="32" height="32" class="rounded-circle flex-shrink-0">
+          <div class="d-flex gap-2 w-100 justify-content-between">
+            <div>
+              <p class="mb-0 opacity-95">${question}</p>
+            </div>
+          </div>
+        </a>
+        `;
+        $("#chat-input").val('');
+        var listgroup = $("#list-group");
+        listgroup.append(html_data);
+        listgroup.scrollTop($("#list-group")[0].scrollHeight);
+
+        $.ajax({
+          type: "POST",
+          url: "/chat",
+          headers: {
+            "X-CSRFToken": csrftoken
+          },
+          data: { 'category': category, 'history': history, 'prompt': question },
+          success: function (data) {
+            let gpt_data = '';
+            gpt_data += `
+              <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3">
+                <img src="https://digital-practice.ams3.cdn.digitaloceanspaces.com/static%2Fapp%2Fimg%2Fopenai-logo.png" alt="twbs" width="32" height="32" class="rounded-circle flex-shrink-0">
+                <div class="d-flex gap-2 w-100 justify-content-between">
+                <div>
+                <p class="mb-0 opacity-85">${data}</p>
+                </div>
+              </div>
+              </a>
+              `;
+            $("#list-group").append(gpt_data);
+            $('#list-group').scrollTop($("#list-group")[0].scrollHeight);
+          }
+        });
+      }
+    })
+    $("#gpt-button").click(function () {
+      var category = $('#category').val();
+      var history = $('#history').val();
+      var question = $("#chat-input").val();
+      let html_data = '';
+      html_data += `
+        <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" style="background-color:#e6e6e6">
+          <img src="{% static 'assets/img/user.jfif' %}" alt="twbs" width="32" height="32" class="rounded-circle flex-shrink-0">
+          <div class="d-flex gap-2 w-100 justify-content-between">
+            <div>
+              <p class="mb-0 opacity-95">${question}</p>
+            </div>
+          </div>
+        </a>
+        `;
+      $("#chat-input").val('');
+      var listgroup = $("#list-group");
+      listgroup.append(html_data);
+      listgroup.scrollTop($("#list-group")[0].scrollHeight);
+
+      $.ajax({
+        type: "POST",
+        url: "/chat",
+        headers: {
+          "X-CSRFToken": csrftoken
+        },
+        data: { 'category': category, 'history': history, 'prompt': question },
+        success: function (data) {
+          let gpt_data = '';
+          gpt_data += `
+              <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3">
+                <img src="https://digital-practice.ams3.cdn.digitaloceanspaces.com/static%2Fapp%2Fimg%2Fopenai-logo.png" alt="twbs" width="32" height="32" class="rounded-circle flex-shrink-0">
+                <div class="d-flex gap-2 w-100 justify-content-between">
+                <div>
+                <p class="mb-0 opacity-85">${data}</p>
+                </div>
+              </div>
+              </a>
+              `;
+          $("#list-group").append(gpt_data);
+          $('#list-group').scrollTop($("#list-group")[0].scrollHeight);
+        }
+      });
+    });
+
+    $('#category').change(function () {
+      var category = $(this).val();
+      $.ajax({
+        type: "POST",
+        url: "/get_history",
+        headers: {
+          "X-CSRFToken": csrftoken
+        },
+        data: { 'category': category },
+        success: function (data) {
+          var history_data = ""
+          for (let i = 1; i <= data.length; i++) {
+            console.log(data[i - 1])
+            history_data += `
+           <option value="${data[i - 1]}">${data[i - 1]}</option>
+          `
+          }
+          $('#history').html(history_data);
+          // init chat
+          if (data.length > 0) {
+            $('#chat_title').text(data[0])
+            $.ajax({
+              type: "POST",
+              url: "/get_chat",
+              headers: {
+                "X-CSRFToken": csrftoken
+              },
+              data: { 'history': data[0] },
+              success: function (data) {
+                console.log(data)
+                chat_data = ``
+                for (i = 1; i <= data.length; i++) {
+                  chat_data += `
+            <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" style="background-color:#e6e6e6">
+              <img src="{% static 'assets/img/user.jfif' %}" alt="twbs" width="32" height="32" class="rounded-circle flex-shrink-0">
+              <div class="d-flex gap-2 w-100 justify-content-between">
+                <div>
+                  <p class="mb-0 opacity-95">${data[i - 1][0]}</p>
+                </div>
+              </div>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3">
+                <img src="https://digital-practice.ams3.cdn.digitaloceanspaces.com/static%2Fapp%2Fimg%2Fopenai-logo.png" alt="twbs" width="32" height="32" class="rounded-circle flex-shrink-0">
+                <div class="d-flex gap-2 w-100 justify-content-between">
+                <div>
+                <p class="mb-0 opacity-85">${data[i - 1][1]}</p>
+                </div>
+              </div>
+            </a>
+            `;
+                }
+                $("#list-group").html(chat_data);
+                $('#list-group').scrollTop($("#list-group")[0].scrollHeight);
+              }
+            });
+
+          }
+          else {
+            $('#chat_title').text("No History")
+            $("#list-group ").empty();
+          }
+
+        }
+      });
+    });
+
+    $('#history').change(function () {
+      var history = $(this).val();
+      $('#chat_title').text(history)
+      $.ajax({
+        type: "POST",
+        url: "/get_chat",
+        headers: {
+          "X-CSRFToken": csrftoken
+        },
+        data: { 'history': history },
+        success: function (data) {
+          console.log(data)
+          chat_data = ``
+          for (i = 1; i <= data.length; i++) {
+            chat_data += `
+            <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" style="background-color:#e6e6e6">
+              <img src="{% static 'assets/img/user.jfif' %}" alt="twbs" width="32" height="32" class="rounded-circle flex-shrink-0">
+              <div class="d-flex gap-2 w-100 justify-content-between">
+                <div>
+                  <p class="mb-0 opacity-95">${data[i - 1][0]}</p>
+                </div>
+              </div>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3">
+                <img src="https://digital-practice.ams3.cdn.digitaloceanspaces.com/static%2Fapp%2Fimg%2Fopenai-logo.png" alt="twbs" width="32" height="32" class="rounded-circle flex-shrink-0">
+                <div class="d-flex gap-2 w-100 justify-content-between">
+                <div>
+                <p class="mb-0 opacity-85">${data[i - 1][1]}</p>
+                </div>
+              </div>
+            </a>
+            `;
+          }
+          $("#list-group").html(chat_data);
+          $('#list-group').scrollTop($("#list-group")[0].scrollHeight);
+        }
+      });
+    })
+
+    // create new history
+    $('#create_history').click(function (e) {
+      e.preventDefault();
+      var category = $('#category').val();
+      var history = $('#history_input').val()
+      $.ajax({
+        type: "POST",
+        url: "/create_history",
+        headers: {
+          "X-CSRFToken": csrftoken
+        },
+        data: { 'category': category, 'history': history },
+        success: function (data) {
+          console.log(data)
+          $('#history').prepend(`<option value="${history}" selected>${history}</option>`);
+          $('#chat_title').text(history)
+          // $('#chat_title').append(`history`)
+          $.ajax({
+            type: "POST",
+            url: "/get_chat",
+            headers: {
+              "X-CSRFToken": csrftoken
+            },
+            data: { 'history': history },
+            success: function (data) {
+              console.log(data)
+              chat_data = ``
+              for (i = 1; i <= data.length; i++) {
+                chat_data += `
+            <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" style="background-color:#e6e6e6">
+              <img src="{% static 'assets/img/user.jfif' %}" alt="twbs" width="32" height="32" class="rounded-circle flex-shrink-0">
+              <div class="d-flex gap-2 w-100 justify-content-between">
+                <div>
+                  <p class="mb-0 opacity-95">${data[i - 1][0]}</p>
+                </div>
+              </div>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3">
+                <img src="https://digital-practice.ams3.cdn.digitaloceanspaces.com/static%2Fapp%2Fimg%2Fopenai-logo.png" alt="twbs" width="32" height="32" class="rounded-circle flex-shrink-0">
+                <div class="d-flex gap-2 w-100 justify-content-between">
+                <div>
+                <p class="mb-0 opacity-85">${data[i - 1][1]}</p>
+                </div>
+              </div>
+            </a>
+            `;
+              }
+              $("#list-group").html(chat_data);
+              $('#list-group').scrollTop($("#list-group")[0].scrollHeight);
+            }
+          });
+        }
+      });
+    })
+
+    // delete history
+    $('#delete_history').click(function (e) {
+      // e.preventDefault();
+      // var category = $('#category').val();
+      var history = $('#history').val()
+      console.log(history)
+      $.ajax({
+        type: "POST",
+        url: "/delete_history",
+        headers: {
+          "X-CSRFToken": csrftoken
+        },
+        data: { 'history': history },
+        success: function (data) {
+          console.log(data)
+          $('#history').prepend(`<option value="${history}" selected>${history}</option>`);
+          $('#chat_title').text(history)
+          // $('#chat_title').append(`history`)
+          $.ajax({
+            type: "POST",
+            url: "/get_chat",
+            headers: {
+              "X-CSRFToken": csrftoken
+            },
+            data: { 'history': history },
+            success: function (data) {
+              console.log(data)
+              window.location.href = '/ai'
+            }
+          });
+        }
+      });
+    })
+
+  });
+</script>
+{% endblock %}

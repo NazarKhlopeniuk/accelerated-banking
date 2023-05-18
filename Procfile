@@ -1,0 +1,1 @@
+web: gunicorn copilotv2.wsgi
