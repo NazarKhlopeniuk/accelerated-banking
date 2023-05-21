@@ -144,6 +144,10 @@ def upload(request):
     return render(request, 'upload.html', {'message': message, 'activities': activities})
 
 @login_required
+def ai(request):
+    return render(request, 'ai.html', {'chats': []})
+
+@login_required
 def cpa(request):
     return render(request, 'cpa.html', {'chats': []})
 
