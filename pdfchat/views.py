@@ -272,16 +272,16 @@ def get_chat(request):
 @login_required
 def chat(request):
     try:
-        category = request.POST['category']
-        history = request.POST['history']
+        category = 'CPA'
+        # history = request.POST['history']
         prompt = request.POST['prompt']
 
-        chat = Chat()
-        chat.user = User.objects.get(id=request.user.id)
-        chat.chat_history = history
-        chat.chat_category = category
-        chat.message = prompt
-        chat.sent = datetime.now()
+        # chat = Chat()
+        # chat.user = User.objects.get(id=request.user.id)
+        # chat.chat_history = history
+        # chat.chat_category = category
+        # chat.message = prompt
+        # chat.sent = datetime.now()
 
         # ===== Normal Chatbot =====
         # messages = []
@@ -329,9 +329,9 @@ def chat(request):
         
         docs = docsearch.similarity_search(prompt, include_metadata=True)
         response = chain.run(input_documents=docs, question=prompt + context)
-        chat.response = response
-        chat.received = datetime.now()
-        chat.save()
+        # chat.response = response
+        # chat.received = datetime.now()
+        # chat.save()
     except:
         response = "Sorry went wrong. Try again in a few minutes!"
 
