@@ -298,7 +298,7 @@
 
       </li> {% endcomment %}
 
-      {% if request.user.is_staff %}
+      {% comment %} {% if request.user.is_staff %}
       <li class="nav-item">
         {% if request.path == '/clients' %}
         <a class="nav-link " href="/clients">
@@ -309,7 +309,7 @@
             <span>Clients</span>
           </a>
       </li>
-      {% endif %}
+      {% endif %} {% endcomment %}
       {% if request.user.is_staff %}
       <li class="nav-item">
         {% if request.path == '/library' or request.path == '/upload' %}
