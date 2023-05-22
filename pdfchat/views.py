@@ -255,10 +255,11 @@ def delete_history(request):
 
 @login_required
 def get_chat(request):
-    category = request.POST['category']
-    history = request.POST['history']
+    # category = request.POST['category']
+    # history = request.POST['history']
     chats = Chat.objects.filter(
-        user=request.user.id, chat_history=history, chat_category=category)
+        user=request.user.id)
+        # user=request.user.id, chat_history=history, chat_category=category)
     result = []
     for chat in chats:
         result.append([chat.message, chat.response])
