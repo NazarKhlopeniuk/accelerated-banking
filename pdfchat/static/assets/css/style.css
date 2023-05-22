@@ -1359,6 +1359,7 @@ h6 {
   color: #ccc;
 }
 .chat-submit {  
+  font-size: 20px;
   position:absolute;
   bottom:3px;
   right:10px;
