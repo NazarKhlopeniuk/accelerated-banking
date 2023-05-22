@@ -766,6 +766,7 @@
             }
           }
         });
+        $(".chat-logs").stop().animate({ scrollTop: $(".chat-logs")[0].scrollHeight}, 1000);
       }
       
       function generate_message(msg, type) {
