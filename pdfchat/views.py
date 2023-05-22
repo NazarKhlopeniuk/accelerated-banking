@@ -276,59 +276,57 @@ def chat(request):
         # history = request.POST['history']
         prompt = request.POST['prompt']
 
-        # chat = Chat()
-        # chat.user = User.objects.get(id=request.user.id)
-        # chat.chat_history = history
-        # chat.chat_category = category
-        # chat.message = prompt
-        # chat.sent = datetime.now()
+        chat = Chat()
+        chat.user = User.objects.get(id=request.user.id)
+        chat.chat_history = "history"
+        chat.chat_category = "category"
+        chat.message = prompt
+        chat.sent = datetime.now()
 
         # ===== Normal Chatbot =====
-        # messages = []
-        # messages.append(
-        #     {"role": "user", "content": "Your name is Copilot. You are a helpful assistant for CPA, Legal and HR."})
+        messages = []
+        messages.append(
+            {"role": "user", "content": "Your name is Copilot. You are a helpful assistant for CPA, Legal and HR."})
 
-        # question = {}
-        # question['role'] = 'user'
-        # question['content'] = prompt
-        # messages.append(question)
-        # print("message========", messages, history)
-        # try:
-        #     print("before openai")
-        #     response = openai.ChatCompletion.create(
-        #         model="gpt-3.5-turbo", messages=messages)
-        #     response = response['choices'][0]['message']['content']
-        #     chat.response = response
-        #     print("arriaved hsere")
-        #     chat.received = datetime.now()
-        #     chat.save()
-        # except Exception as e:
-        #     print("except", e)
-        #     response = "Sorry, try again in a few minutes."
-        if category == 'CPA':
-            context = """You are an Accounting Assistant chatbot specifically designed to serve Certified Public Accountants (CPAs) and accountants. 
-            Your purpose is to provide accurate and helpful information related to accounting topics, including but not limited to 
-            taxation, financial reporting, audit and assurance, management accounting, financial analysis, and regulatory compliance. 
-            You should only answer questions and provide guidance within the scope of accounting and CPA-related matters. 
-            Your responses should be based on the latest accounting principles, standards, and regulations applicable in the given context. 
-            Please note that you are not providing professional advice but rather general guidance to help accountants and CPAs with their queries."""
-        elif category == 'Legal':
-            context = """You are a Legal Assistant chatbot specifically designed to serve lawyers and legal professionals. 
-            Your purpose is to provide accurate and helpful information related to legal matters and law firm operations,
-            including but not limited to contract law, civil litigation, criminal law, family law, intellectual property, 
-            employment law, and more. You should only answer questions and provide guidance within the scope of legal matters
-            and law firm-related topics. Your responses should be based on the general principles and regulations applicable in 
-            the given context. Please note that you are not providing legal advice but rather general guidance to help lawyers 
-            and legal professionals with their queries."""
-        else:
-            context = """ChatGPT, you are an AI-powered HR Assistant designed to help Human Resource professionals with their 
-            tasks and responsibilities. Your expertise is focused on topics related to Human Resources, including recruitment, 
-            onboarding, employee relations, training and development, performance management, compensation and benefits, labor laws,
-            workplace policies, diversity and inclusion, and employee engagement. You should provide relevant and accurate information, 
-            best practices, and guidance on any HR-related topic, while keeping in mind that your responses should not be considered professional legal advice."""
+        question = {}
+        question['role'] = 'user'
+        question['content'] = prompt
+        messages.append(question)
+        try:
+            response = openai.ChatCompletion.create(
+                model="gpt-3.5-turbo", messages=messages)
+            response = response['choices'][0]['message']['content']
+            chat.response = response
+            chat.received = datetime.now()
+            chat.save()
+        except Exception as e:
+            print("except", e)
+            response = "Sorry, try again in a few minutes."
+        # if category == 'CPA':
+        #     context = """You are an Accounting Assistant chatbot specifically designed to serve Certified Public Accountants (CPAs) and accountants. 
+        #     Your purpose is to provide accurate and helpful information related to accounting topics, including but not limited to 
+        #     taxation, financial reporting, audit and assurance, management accounting, financial analysis, and regulatory compliance. 
+        #     You should only answer questions and provide guidance within the scope of accounting and CPA-related matters. 
+        #     Your responses should be based on the latest accounting principles, standards, and regulations applicable in the given context. 
+        #     Please note that you are not providing professional advice but rather general guidance to help accountants and CPAs with their queries."""
+        # elif category == 'Legal':
+        #     context = """You are a Legal Assistant chatbot specifically designed to serve lawyers and legal professionals. 
+        #     Your purpose is to provide accurate and helpful information related to legal matters and law firm operations,
+        #     including but not limited to contract law, civil litigation, criminal law, family law, intellectual property, 
+        #     employment law, and more. You should only answer questions and provide guidance within the scope of legal matters
+        #     and law firm-related topics. Your responses should be based on the general principles and regulations applicable in 
+        #     the given context. Please note that you are not providing legal advice but rather general guidance to help lawyers 
+        #     and legal professionals with their queries."""
+        # else:
+        #     context = """ChatGPT, you are an AI-powered HR Assistant designed to help Human Resource professionals with their 
+        #     tasks and responsibilities. Your expertise is focused on topics related to Human Resources, including recruitment, 
+        #     onboarding, employee relations, training and development, performance management, compensation and benefits, labor laws,
+        #     workplace policies, diversity and inclusion, and employee engagement. You should provide relevant and accurate information, 
+        #     best practices, and guidance on any HR-related topic, while keeping in mind that your responses should not be considered professional legal advice."""
         
-        docs = docsearch.similarity_search(prompt, include_metadata=True)
-        response = chain.run(input_documents=docs, question=prompt + context)
+        # pdf chat
+        # docs = docsearch.similarity_search(prompt, include_metadata=True)
+        # response = chain.run(input_documents=docs, question=prompt + context)
         # chat.response = response
         # chat.received = datetime.now()
         # chat.save()
