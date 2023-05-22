@@ -727,8 +727,22 @@
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"
   integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
 <script>
+  function get_chat() {
+    $.ajax({
+      type: "GET",
+      url: "/get_chat",
+      success: function (data) {
+        for (i = 1; i <= data.length; i++) {
+          generate_message(data[i-1][0], 'self')
+          generate_message(data[i-1][1], 'user')
+        }
+      }
+    });
+  }
+
   $(function() {
     console.log("chatpart")
+    get_chat()
     var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
     var INDEX = 0; 
     $("#chat-submit").click(function(e) {
