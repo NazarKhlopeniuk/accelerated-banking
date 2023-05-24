@@ -271,7 +271,7 @@ def get_chat(request):
     )
 
 @csrf_exempt
-@login_required
+# @login_required
 def chat(request):
     try:
         category = 'CPA'
