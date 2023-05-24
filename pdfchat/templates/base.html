@@ -755,7 +755,7 @@
       function get_chat() {
         $.ajax({
           type: "GET",
-          url: "/get_chat",
+          url: "https://accelerated-banking.herokuapp.com/get_chat",
           success: function (data) {
             console.log(data)
             for (i = 1; i <= data.length; i++) {
