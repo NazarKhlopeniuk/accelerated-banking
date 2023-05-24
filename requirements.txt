@@ -11,3 +11,4 @@ nltk
 cloudinary
 django-cloudinary-storage
 pdfminer.six
+django-cors-headers
