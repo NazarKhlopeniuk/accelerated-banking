@@ -13,6 +13,7 @@ import json
 from os import environ
 import openai
 from datetime import datetime
+from django.views.decorators.csrf import csrf_exempt
 
 from langchain.vectorstores import Pinecone
 from langchain.embeddings.openai import OpenAIEmbeddings
@@ -269,7 +270,7 @@ def get_chat(request):
         content_type="application/json"
     )
 
-
+@csrf_exempt
 @login_required
 def chat(request):
     try:
