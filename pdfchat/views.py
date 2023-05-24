@@ -254,7 +254,7 @@ def delete_history(request):
     return HttpResponse("Success")
 
 
-@login_required
+# @login_required
 def get_chat(request):
     # category = request.POST['category']
     # history = request.POST['history']
