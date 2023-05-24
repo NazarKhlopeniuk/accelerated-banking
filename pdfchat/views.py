@@ -278,12 +278,12 @@ def chat(request):
         # history = request.POST['history']
         prompt = request.POST['prompt']
 
-        chat = Chat()
-        chat.user = User.objects.get(id=request.user.id)
-        chat.chat_history = "history"
-        chat.chat_category = "category"
-        chat.message = prompt
-        chat.sent = datetime.now()
+        # chat = Chat()
+        # chat.user = User.objects.get(id=request.user.id)
+        # chat.chat_history = "history"
+        # chat.chat_category = "category"
+        # chat.message = prompt
+        # chat.sent = datetime.now()
 
         # ===== Normal Chatbot =====
         messages = []
@@ -298,9 +298,9 @@ def chat(request):
             response = openai.ChatCompletion.create(
                 model="gpt-3.5-turbo", messages=messages)
             response = response['choices'][0]['message']['content']
-            chat.response = response
-            chat.received = datetime.now()
-            chat.save()
+            # chat.response = response
+            # chat.received = datetime.now()
+            # chat.save()
         except Exception as e:
             print("except", e)
             response = "Sorry, try again in a few minutes."
