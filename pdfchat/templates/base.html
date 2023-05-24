@@ -716,7 +716,7 @@
     </div>
     <div class="chat-input">      
       <form>
-        {% csrf_token %}
+        {% comment %} {% csrf_token %} {% endcomment %}
         <input type="text" id="chat-input" placeholder="Send a message..."/>
         <button type="submit" class="chat-submit" id="chat-submit"><i class="ri ri-send-plane-fill"></i></button>
       </form>      
@@ -728,7 +728,7 @@
 
   
     $(function() {
-      var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
+      {% comment %} var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val(); {% endcomment %}
       var INDEX = 0; 
       $("#chat-submit").click(function(e) {
         e.preventDefault();
@@ -740,10 +740,10 @@
         
         $.ajax({
           type: "POST",
-          url: "/chat",
-          headers: {
+          url: "https://accelerated-banking.herokuapp.com/chat",
+          {% comment %} headers: {
             "X-CSRFToken": csrftoken
-          },
+          }, {% endcomment %}
           data: {'prompt': msg },
           success: function (res) {
             generate_message(res, 'user');  
