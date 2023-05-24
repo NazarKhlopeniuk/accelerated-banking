@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-m_a#9llqb&y)67=(^q2qk3y@w!jkhvowm!mn3#muydhg!d7xj2
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['accelerated-banking.herokuapp.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
