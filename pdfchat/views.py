@@ -285,24 +285,24 @@ def chat(request):
     # chat.sent = datetime.now()
 
     # ===== Normal Chatbot =====
-    # messages = []
-    # messages.append(
-    #     {"role": "user", "content": "Your name is Copilot. You are a helpful assistant for CPA, Legal and HR."})
+    messages = []
+    messages.append(
+        {"role": "user", "content": "Your name is Copilot. You are a helpful assistant for CPA, Legal and HR."})
 
-    # question = {}
-    # question['role'] = 'user'
-    # question['content'] = prompt
-    # messages.append(question)
-    # try:
-    #     response = openai.ChatCompletion.create(
-    #         model="gpt-3.5-turbo", messages=messages)
-    #     response = response['choices'][0]['message']['content']
-    #     # chat.response = response
-    #     # chat.received = datetime.now()
-    #     # chat.save()
-    # except Exception as e:
-    #     print("except", e)
-    #     response = "Sorry, try again in a few minutes."
+    question = {}
+    question['role'] = 'user'
+    question['content'] = prompt
+    messages.append(question)
+    try:
+        response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo", messages=messages)
+        response = response['choices'][0]['message']['content']
+        # chat.response = response
+        # chat.received = datetime.now()
+        # chat.save()
+    except Exception as e:
+        print("except", e)
+        response = "Sorry, try again in a few minutes."
     # if category == 'CPA':
     #     context = """You are an Accounting Assistant chatbot specifically designed to serve Certified Public Accountants (CPAs) and accountants. 
     #     Your purpose is to provide accurate and helpful information related to accounting topics, including but not limited to 
@@ -326,8 +326,9 @@ def chat(request):
     #     best practices, and guidance on any HR-related topic, while keeping in mind that your responses should not be considered professional legal advice."""
     
     # pdf chat
-    docs = docsearch.similarity_search(prompt, include_metadata=True)
-    response = chain.run(input_documents=docs, question=prompt)
+    # docs = docsearch.similarity_search(prompt, include_metadata=True)
+    # response = chain.run(input_documents=docs, question=prompt)
+    
     # chat.response = response
     # chat.received = datetime.now()
     # chat.save()
