@@ -151,7 +151,7 @@ LOGIN_URL = '/login'
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': 'abcdrnt9kp8q',
     'API_KEY': '313127421769196',
-    'API_SECRET': 'bHmoNSPsSkkR-HbrmmlxoAqyxB0',
+    'API_SECRET': 'YLdb0I5uBOoeKT1QYWhA71E0m3E',
 }
 
 MEDIA_URL = '/media/'
